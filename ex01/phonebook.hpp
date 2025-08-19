@@ -13,8 +13,8 @@ private:
 
 public:
     PhoneBook();
-    void addContact();
-    void searchContacts() const;
+    bool addContact();
+    bool searchContacts() const;
 };
 
 #endif
