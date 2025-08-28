@@ -3,13 +3,6 @@
 
 #include <iostream>
 
-enum Level {
-    DEBUG = 0,
-    INFO = 1,
-    WARNING = 2,
-    ERROR = 3
-};
-
 class Harl
 {
     private:

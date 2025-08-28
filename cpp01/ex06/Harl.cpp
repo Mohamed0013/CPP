@@ -28,27 +28,41 @@ void Harl::error( void )
 
 void Harl::harlFilter(std::string levelt)
 {
-    Level level;
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    void (Harl::*functions[])() = {
+        &Harl::debug, &Harl::info, &Harl::warning, &Harl::error
+    };
 
-    if (levelt == "DEBUG") level = DEBUG;
-    else if (levelt == "INFO") level = INFO;
-    else if (levelt == "WARNING") level = WARNING;
-    else if (levelt == "ERROR") level = ERROR;
-    else level = static_cast<Level>(-1);
-
-    switch (level)
+    int i = 0;
+    for (; i < 4; i++)
     {
-        case DEBUG:
-            Harl::debug();
-        case INFO:
-            Harl::info();
-        case WARNING:
-            Harl::warning();
-        case ERROR:
-            Harl::error();
-            break ;
+        if (levels[i] == levelt)
+            break;
+    }
+
+    switch (i)
+    {
+        case 0:
+            (this->*functions[0])();
+            // intentional cascade
+            (this->*functions[1])();
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 1:
+            (this->*functions[1])();
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 2:
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 3:
+            (this->*functions[3])();
+            break;
         default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-            break ;
+            break;
     }
 }

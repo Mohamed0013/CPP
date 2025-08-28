@@ -10,7 +10,7 @@ private:
 
 public:
     Zombie(std::string name);
-    ~Zombie();  // destructor will tell when zombie dies
+    ~Zombie();
 
     void announce(void);
 };

@@ -5,13 +5,13 @@ Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
 int main() {
-    std::cout << "=== returned Zombie ===" << std::endl;
-    Zombie* retZombie = newZombie("Mohamed");
+    std::cout << "=== Start ===" << std::endl;
+    Zombie* retZombie = newZombie("Hisoka");
     retZombie->announce();
-    delete retZombie; // must delete to avoid leak
+    delete retZombie;
 
     std::cout << "\n=== Stack Zombie ===" << std::endl;
-    randomChump("Stacky");
+    randomChump("Kurulu");
 
     return 0;
 }
